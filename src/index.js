@@ -1,4 +1,3 @@
-
 const express = require('express');
 const cors = require('cors');
 
@@ -12,9 +11,9 @@ server.listen(serverPort, () => {
   console.log(`Server listening at http://localhost:${serverPort}`);
 });
 
-server.get('/users', (req, res) => {
+server.post('/users', (req, res) => {
   const response = {
-    users: [{ name: 'Sofía' }, { name: 'María' }]
+    users: [{ name: 'Sofía' }, { name: 'María' }],
   };
   res.json(response);
 });
