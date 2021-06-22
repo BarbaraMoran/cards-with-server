@@ -1,16 +1,16 @@
 const express = require('express');
 const cors = require('cors');
 
-const server = express();
+const app = express();
 
-server.use(cors());
-server.use(express.json());
+app.use(cors());
+app.use(express.json());
 
 const serverPort = 3001;
-server.listen(serverPort, () => {
+app.listen(serverPort, () => {
   console.log(`Server listening at http://localhost:${serverPort}`);
 });
 
-server.post('/card/', (req, res) => {
-  res.json('<html><body>hello</body></html>');
+app.post('/card/', (req, res) => {
+  res.json('Esta es la respuesta del servidor');
 });
