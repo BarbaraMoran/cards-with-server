@@ -11,6 +11,6 @@ server.listen(serverPort, () => {
   console.log(`Server listening at http://localhost:${serverPort}`);
 });
 
-server.post('/card', (req, res) => {
-  res.json(response);
+server.post('/card/', (req, res) => {
+  res.json('<html><body>hello</body></html>');
 });
