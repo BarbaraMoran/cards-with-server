@@ -1,4 +1,4 @@
-const ENDPOINT = 'https://awesome-profile-cards.herokuapp.com/card';
+const ENDPOINT = 'http://localhost:3001/card/';
 
 const postDataFetch = (dataState) => {
   return fetch(ENDPOINT, {
