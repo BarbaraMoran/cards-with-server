@@ -6,28 +6,35 @@ const app = express();
 
 app.use(cors());
 app.use(express.json());
+app.set('view engine', 'ejs');
+
 const serverPort = 3001;
 app.listen(serverPort, () => {
   console.log(`Server listening at http://localhost:${serverPort}`);
 });
 
-{
-  /*
-CREAR SERVIDOR DE ESTÁTICOS
-- crear carpeta public (nombrada por convención) e incluir todo lo que tengo en la carpeta docs
-- nueva variable con la direccion del servidor de estáticos (./public)
-- server.use(express.static(./public))
- */
-}
 const serverStaticPath = './public';
 app.use(express.static(serverStaticPath));
 
-//añadir app.get (solo plantemaiento)
-app.get('/card/:id', (req, res) => {});
+const serverStaticPath2 = './static';
+app.use(express.static(serverStaticPath2));
+
+app.get('/card/:id', (req, res) => {
+  const data = {
+    name: 'Maria',
+    job: 'Maria',
+    photo: 'Maria',
+    linkedin: 'Maria',
+    github: 'Maria',
+    email: 'Maria',
+    phone: 'Maria',
+    palette: 'Maria',
+  };
+  res.render('pages/card', data);
+});
 
 app.post('/card/', (req, res) => {
   const response = {};
-  //comprobar el resto de parámetros
   if (req.body.name === '') {
     response.success = false;
     response.error = 'Debes rellenar el nombre';
@@ -51,12 +58,11 @@ app.post('/card/', (req, res) => {
     response.error = 'Debes rellenar el teléfono';
   } else {
     response.success = true;
-    response.cardURL = 'mi_card_url';
+    response.cardURL = '/card/1';
   }
   res.json(response);
 });
 
-//añadir la ruta * para que pase por aqui si todo falla
 app.get('*', (req, res) => {
   const notFoundFileRelativePath = '../static/404-not-found.html';
   const notFoundFileAbsolutePath = path.join(
