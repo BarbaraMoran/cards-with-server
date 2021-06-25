@@ -6,7 +6,6 @@
   "scripts": {
     "start": "node src/index.js",
     "dev": "nodemon src/index.js",
-    "build": "cd web && npm run build && cd .. && rm -rf public && mv web/build public"
   },
   "repository": {
     "type": "git",
