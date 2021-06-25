@@ -20,14 +20,15 @@ app.use(express.static(serverStaticPath));
 const serverStaticPath2 = './static';
 app.use(express.static(serverStaticPath2));
 
-const db = new Database('./data/database.db', {
+const db = new Database('./src/data/database.db', {
   verbose: console.log,
 });
 
 app.get('/card/:id', (req, res) => {
   const query = db.prepare('SELECT * FROM users');
   const data = query.all();
-  res.render('pages/card', data);
+  console.log(data);
+  res.render('pages/card', data[0]);
 });
 
 app.post('/card/', (req, res) => {
