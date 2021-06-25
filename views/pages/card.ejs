@@ -21,35 +21,38 @@
       type="image/gif"
       sizes="16x16"
     />
-    <link rel="stylesheet" href="../styles/card.css">
+    <!-- <link rel="stylesheet" href="../styles/card.css"> -->
+    <link href="/static/css/main.ef3b916c.chunk.css" rel="stylesheet" type="text/css">
     <title>Card</title>
   </head>
   <body>
-    <main class="main">
-        <section class="card">
-          <div class='card_header'>
-            <h2 class='card_header--name'>
-              <%= name %>
-            </h2>
-            <h3 class='card_header--job'>
-              <%= job %>
-            </h3>
-          </div>
-          <div class="card_image" style="background-image:url('<%= photo %>')"></div>
-          <ul class="card_logos">
-            <li class="card_logos--icon">
-              <a href='tel:<%= phone %>'><i class="fas fa-mobile-alt"></i></a>
-            </li>
-            <li class="card_logos--icon">
-              <a href='mailto:<%= email %>'><i class="far fa-envelope"></i></a>
-            </li>
-            <li class="card_logos--icon">
-              <a href="https://www.linkedin.com/in/<%= linkedin %>"><i class="fab fa-linkedin-in"></i></a>
-            </li>
-            <li class="card_logos--icon">
-              <a href="https://www.github.com/<%=github %>"><i class="fab fa-github-alt"></a></i>
-            </li>
-          </ul>
+    <main class="main_card">
+        <section class="card_preview">
+          <section class="card">
+            <div class='card_header'>
+              <h2 class='card_header--name'>
+                <%= name %>
+              </h2>
+              <h3 class='card_header--job'>
+                <%= job %>
+              </h3>
+            </div>
+            <div class="card_image" style="background-image:url('<%= photo %>')"></div>
+            <ul class="card_logos">
+              <li class="card_logos--icon">
+                <a href='tel:<%= phone %>'><i class="fas fa-mobile-alt"></i></a>
+              </li>
+              <li class="card_logos--icon">
+                <a href='mailto:<%= email %>'><i class="far fa-envelope"></i></a>
+              </li>
+              <li class="card_logos--icon">
+                <a href="https://www.linkedin.com/in/<%= linkedin %>"><i class="fab fa-linkedin-in"></i></a>
+              </li>
+              <li class="card_logos--icon">
+                <a href="https://www.github.com/<%=github %>"><i class="fab fa-github-alt"></a></i>
+              </li>
+            </ul>
+          </section>
         </section>
     </main>
   </body>

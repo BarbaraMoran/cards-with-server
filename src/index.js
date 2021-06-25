@@ -1,6 +1,7 @@
 const express = require('express');
 const cors = require('cors');
 const path = require('path');
+const Database = require('better-sqlite3');
 
 const app = express();
 
@@ -8,7 +9,7 @@ app.use(cors());
 app.use(express.json());
 app.set('view engine', 'ejs');
 
-const serverPort = 3001;
+const serverPort = process.env.port || 3001;
 app.listen(serverPort, () => {
   console.log(`Server listening at http://localhost:${serverPort}`);
 });
@@ -19,17 +20,13 @@ app.use(express.static(serverStaticPath));
 const serverStaticPath2 = './static';
 app.use(express.static(serverStaticPath2));
 
+const db = new Database('./data/database.db', {
+  verbose: console.log,
+});
+
 app.get('/card/:id', (req, res) => {
-  const data = {
-    name: 'Maria',
-    job: 'Maria',
-    photo: 'Maria',
-    linkedin: 'Maria',
-    github: 'Maria',
-    email: 'Maria',
-    phone: 'Maria',
-    palette: 'Maria',
-  };
+  const query = db.prepare('SELECT * FROM users');
+  const data = query.all();
   res.render('pages/card', data);
 });
 
