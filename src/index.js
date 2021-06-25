@@ -9,7 +9,7 @@ app.use(cors());
 app.use(express.json());
 app.set('view engine', 'ejs');
 
-const serverPort = process.env.port || 3001;
+const serverPort = process.env.PORT || 3001;
 app.listen(serverPort, () => {
   console.log(`Server listening at http://localhost:${serverPort}`);
 });
