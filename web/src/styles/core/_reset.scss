@@ -135,3 +135,16 @@ table {
 main {
   overflow-x: hidden;
 }
+a,
+a:visited,
+a:hover,
+a:active {
+  text-decoration: none;
+  color: inherit;
+}
+
+
+.main__button--link {
+  color: white;
+
+}
