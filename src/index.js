@@ -6,7 +6,7 @@ const Database = require('better-sqlite3');
 const app = express();
 
 app.use(cors());
-app.use(express.json());
+app.use(express.json({ limit: '10mb' }));
 app.set('view engine', 'ejs');
 
 const serverPort = process.env.PORT || 3001;
@@ -17,46 +17,64 @@ app.listen(serverPort, () => {
 const serverStaticPath = './public';
 app.use(express.static(serverStaticPath));
 
-const serverStaticPath2 = './static';
-app.use(express.static(serverStaticPath2));
+// const serverStaticPath2 = './static';
+// app.use(express.static(serverStaticPath2));
 
 const db = new Database('./src/data/database.db', {
   verbose: console.log,
 });
 
 app.get('/card/:id', (req, res) => {
-  const query = db.prepare('SELECT * FROM users');
-  const data = query.all();
-  console.log(data);
-  res.render('pages/card', data[0]);
+  const query = db.prepare('SELECT * FROM users WHERE id = ?');
+  const data = query.get(req.params.id);
+  res.render('pages/card', data);
 });
 
 app.post('/card/', (req, res) => {
   const response = {};
-  if (req.body.name === '') {
+  if (!req.body.name) {
     response.success = false;
     response.error = 'Debes rellenar el nombre';
-  } else if (req.body.job === '') {
+  } else if (!req.body.job) {
     response.success = false;
     response.error = 'Debes rellenar el puesto';
-  } else if (req.body.photo === '') {
+  } else if (!req.body.photo) {
     response.success = false;
     response.error = 'Debes rellenar la imagen';
-  } else if (req.body.email === '') {
+  } else if (!req.body.email) {
     response.success = false;
     response.error = 'Debes rellenar el email';
-  } else if (req.body.linkedin === '') {
+  } else if (!req.body.linkedin) {
     response.success = false;
     response.error = 'Debes rellenar el linkedin';
-  } else if (req.body.github === '') {
+  } else if (!req.body.github) {
     response.success = false;
     response.error = 'Debes rellenar el github';
-  } else if (req.body.phone === '') {
+  } else if (!req.body.phone) {
     response.success = false;
     response.error = 'Debes rellenar el teléfono';
   } else {
+    const query = db.prepare(
+      'INSERT INTO users (name, job, photo, phone, email, linkedin, github, palette) VALUES (?,?,?,?,?,?,?,?)'
+    );
+    const result = query.run(
+      req.body.name,
+      req.body.job,
+      req.body.photo,
+      req.body.phone,
+      req.body.email,
+      req.body.linkedin,
+      req.body.github,
+      req.body.palette
+    );
     response.success = true;
-    response.cardURL = '/card/1';
+    if (req.host === 'localhost') {
+      response.cardURL = 'http://localhost:3001/card/' + result.lastInsertRowid;
+    } else {
+      response.cardURL =
+        'https://delicious-profile-card.herokuapp.com/card/' +
+        result.lastInsertRowid;
+    }
   }
   res.json(response);
 });
@@ -69,13 +87,3 @@ app.get('*', (req, res) => {
   );
   res.status(404).sendFile(notFoundFileAbsolutePath);
 });
-
-{
-  /*
-SUBIR LA WEB A HEROKU (MOTOR DE PLANTILLAS)
-- solo una integrante
-- abrir cuenta en heroku (lenguaje ppal node.js)
-- instalamos en nuestro local la app de heroku
-  $ sudo snap install --classic heroku
- */
-}
