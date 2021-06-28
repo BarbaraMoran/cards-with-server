@@ -1,4 +1,4 @@
-const ENDPOINT = 'http://localhost:3001/card/';
+const ENDPOINT = '/card/';
 
 const postDataFetch = (dataState) => {
   return fetch(ENDPOINT, {
