@@ -94,7 +94,8 @@
 .full {
   opacity: 1;
 }
-.orange {
+
+.palette-2 {
   .card {
     &_header {
       border-left: $colorpalette5 5px solid;
@@ -111,7 +112,7 @@
   }
 }
 
-.yellow {
+.palette-3 {
   .card {
     &_header {
       border-left: $colorpalette7 5px solid;

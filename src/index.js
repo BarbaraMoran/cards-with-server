@@ -17,9 +17,6 @@ app.listen(serverPort, () => {
 const serverStaticPath = './public';
 app.use(express.static(serverStaticPath));
 
-// const serverStaticPath2 = './static';
-// app.use(express.static(serverStaticPath2));
-
 const db = new Database('./src/data/database.db', {
   verbose: console.log,
 });
@@ -68,11 +65,12 @@ app.post('/card/', (req, res) => {
       req.body.palette
     );
     response.success = true;
-    if (req.host === 'localhost') {
-      response.cardURL = 'http://localhost:3001/card/' + result.lastInsertRowid;
+    if (req.hostname === 'localhost') {
+      response.cardURL =
+        `http://localhost:${serverPort}/card/` + result.lastInsertRowid;
     } else {
       response.cardURL =
-        'https://delicious-profile-card.herokuapp.com/card/' +
+        'https://create-ur-awesome-profile-card.herokuapp.com/card/' +
         result.lastInsertRowid;
     }
   }

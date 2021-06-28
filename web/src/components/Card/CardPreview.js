@@ -13,9 +13,9 @@ class CardPreview extends Component {
     if (this.props.palette === '1') {
       this.colorClass = '';
     } else if (this.props.palette === '2') {
-      this.colorClass = 'orange';
+      this.colorClass = 'palette-2';
     } else {
-      this.colorClass = 'yellow';
+      this.colorClass = 'palette-3';
     }
     return this.colorClass;
   }
