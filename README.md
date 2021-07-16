@@ -1,39 +1,39 @@
+## ECODE business card maker
 
-Proyecto  realizado por 5 compañeras durante el transcurso del bootcamp de Adalab.
-Dicho proyecto consiste en heredar código realizado por compañeras de otro equipo,  y refactorizarlo
+🌱 Business card generator with server (Responsive Web application, mobile first). 
 
-Puedes ver el resultado final accediendo directamente a este enlace:
-http://beta.adalab.es/project-promo-m-module-3-team-3/
-****
-#objetivos
-Analizar y refactorizar código heredado
-Identificar y crear componentes de una página
-Uso de React
-Búsqueda de información en librerias externas
+🌱 Team project carried out during the Adalab bootcamp. (Agile & Scrum)
+
+🌱 The challenge consisted of refactoring an inherited code (migrate JS to React), and create our own server.
+
+🌱 Technologies and tools: <b>React, JS ,HTML(JSX), CSS(SASS), nodeJs, Express Js, ejs, nodemon,gulp, SQLite, Gulp, Git, LocalStorage...</b>
 
 
-Para poder llevarlo a cabo hemos aplicado conocimientos adquiridos durante estos meses
-Se detallan algunos de los conocimientos aplicados para realización del proyecto: 
-
-Uso de HTML Ecma6
-Maquetación usando SASS, 
-
-Uso diseño Responsive
-
-Acceso y envío de datos a un servidor 
-
-Almacenamiento en local usando LocalStorage 
-
-Uso de git para el control de versiones del proyecto 
-
-Publicación del resultado en Internet usando GitHub Pagesç
-
-##Metodologa de trabajo
-
-MARCO SCRUM dividido en dos sprints
+If you want to see the final result, click on this link:
+https://create-ur-awesome-profile-card.herokuapp.com/#/
 
 
-##Acceso y estructuración de carpetas del proyecto
+<a target="_blank" href="https://create-ur-awesome-profile-card.herokuapp.com/#/"><img src="https://i.ibb.co/ZxHCHzd/ecode.jpg"/></a>
 
 
 
+## Download the repository and try it! 😊
+
+(You will have to install Node)
+
+Install dependencies:
+
+```
+npm install
+```
+
+Run the project: 
+
+```
+npm run dev
+```
+
+
+## Contact!📬
+
+If you have any question or suggestion please let me know by sending me an email (barbaramoranrr@gmail.com)
